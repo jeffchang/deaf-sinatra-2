@@ -1,17 +1,17 @@
 get '/' do
-  @grandma = params[:grandma]
   # Look in app/views/index.erb
   erb :index
 end
 
 post '/grandma' do
   if params["user_input"] == params["user_input"].upcase
-    redirect '/?grandma=Not since 1983!'
+    @words = 'Not since 1983!'
   elsif params["user_input"] == "I love you."
-    redirect '/?grandma=I love you too! Have a nice day!'
+    @words = 'I love you too! Have a nice day!'
   else
-    redirect '/?grandma=Speak up, kiddo!'
+    @words = 'Speak up, kiddo!'
   end
+  erb :response
 end
 
 # http://www.sinatrarb.com/intro#Browser%20Redirect redirect and since we are
